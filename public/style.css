@@ -1,0 +1,779 @@
+/* ==========================================
+ PORTFOLIOPRO 2.0
+ PROFESSIONAL HOME & LOGIN UI
+ File: style.css
+ ========================================== */
+
+
+/* 1. GLOBAL VARIABLES */
+
+:root {
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-light: #dbeafe;
+  --dark: #0f172a;
+  --muted: #64748b;
+  --background: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+  --shadow-sm: 0 5px 18px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 15px 40px rgba(15, 23, 42, 0.10);
+  --shadow-blue: 0 15px 35px rgba(37, 99, 235, 0.15);
+  --radius: 18px;
+}
+
+
+/* 2. RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: var(--background);
+  color: var(--dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+
+/* 3. NAVIGATION BAR */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+  padding: 18px 8%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.035);
+}
+
+.logo {
+  color: var(--dark);
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--blue);
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar nav a {
+  position: relative;
+  padding: 8px 0;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  border-radius: 5px;
+  transition: width 0.25s ease;
+}
+
+.navbar nav a:hover {
+  color: var(--blue);
+}
+
+.navbar nav a:hover::after {
+  width: 100%;
+}
+
+
+/* 4. HERO SECTION */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 70px;
+  min-height: 620px;
+  padding: 90px 8%;
+  background: linear-gradient( 125deg, #eff6ff 0%, #f8fbff 48%, #ffffff 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -190px;
+  right: -120px;
+  background: rgba(96, 165, 250, 0.10);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  bottom: -140px;
+  left: -100px;
+  background: rgba(37, 99, 235, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero>div {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: rgba(219, 234, 254, 0.6);
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.hero h1 {
+  max-width: 650px;
+  margin: 24px 0;
+  font-size: clamp(38px, 5vw, 65px);
+  font-weight: 850;
+  letter-spacing: -2px;
+  line-height: 1.13;
+}
+
+.hero h1 span {
+  color: var(--blue);
+}
+
+.hero p {
+  max-width: 570px;
+  margin-bottom: 32px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+
+/* 5. PRIMARY BUTTON */
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--blue);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.18);
+}
+
+.primary-btn:hover {
+  background: var(--blue-dark);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-blue);
+}
+
+.primary-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* 6. HERO PORTFOLIO PREVIEW */
+
+.hero-preview {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  margin-left: auto;
+  padding: 50px 35px;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 20px 55px rgba(37, 99, 235, 0.11);
+  text-align: center;
+}
+
+.hero-preview::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: linear-gradient( 90deg, var(--blue), #60a5fa, #93c5fd);
+  border-radius: 24px 24px 0 0;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 25px;
+  border: 4px solid white;
+  border-radius: 50%;
+  background: linear-gradient( 135deg, #dbeafe, #bfdbfe);
+  color: var(--blue);
+  font-size: 46px;
+  font-weight: 800;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.14);
+}
+
+.hero-preview h2 {
+  margin: 0 0 8px;
+  font-size: 25px;
+  letter-spacing: -0.6px;
+}
+
+.hero-preview p {
+  margin: 0 auto 25px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.preview-line {
+  width: 85%;
+  height: 12px;
+  margin: 15px auto 0;
+  border-radius: 999px;
+  background: linear-gradient( 90deg, #dbeafe, #eff6ff);
+}
+
+.preview-line.short {
+  width: 60%;
+}
+
+
+/* 7. HOVER EFFECTS */
+
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.14);
+}
+
+
+/* 8. FEATURES SECTION */
+
+.features {
+  padding: 95px 8%;
+  background: var(--white);
+  text-align: center;
+}
+
+.features h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  margin-top: 45px;
+}
+
+.feature-card {
+  padding: 38px 28px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 65px;
+  height: 65px;
+  margin-bottom: 22px;
+  border-radius: 17px;
+  background: #eff6ff;
+  font-size: 32px;
+}
+
+.feature-card h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.feature-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.feature-card:hover {
+  border-color: #bfdbfe;
+}
+
+.feature-card:hover .feature-icon {
+  background: #dbeafe;
+}
+
+
+/* 9. LOGIN SECTION */
+
+.login-section {
+  position: relative;
+  padding: 95px 20px;
+  background: linear-gradient( 135deg, #eff6ff, #e0eaff, #f8fafc);
+}
+
+.login-card {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.10);
+}
+
+.login-card>h2 {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.login-card>p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+
+/* 10. USER / ADMIN TABS */
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+  margin: 25px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f1f5f9;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tabs button.active {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.20);
+}
+
+.tabs button:not(.active):hover {
+  background: #e2e8f0;
+  color: var(--dark);
+}
+
+
+/* 11. FORM FIELDS */
+
+.login-card label {
+  display: block;
+  margin: 18px 0 8px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.login-card input {
+  display: block;
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--dark);
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card input::placeholder {
+  color: #94a3b8;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.login-card input:hover {
+  border-color: #94a3b8;
+}
+
+.full {
+  width: 100%;
+  margin-top: 25px;
+}
+
+
+/* 12. REGISTER LINK */
+
+#registerLink {
+  margin-top: 23px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.text-btn {
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.text-btn:hover {
+  text-decoration: underline;
+}
+
+
+/* 13. REGISTRATION FORM */
+
+#registerForm {
+  margin-top: 25px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+#registerForm h3 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 750;
+  text-align: center;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.secondary-btn:hover {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+
+/* 14. LOGIN MESSAGE */
+
+#loginMessage {
+  margin: 15px 0 0;
+  text-align: center;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+#loginMessage:empty {
+  display: none;
+}
+
+
+/* 15. HIDDEN ELEMENTS */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+
+/* 16. FOOTER */
+
+footer {
+  padding: 28px 20px;
+  background: var(--dark);
+  color: #cbd5e1;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
+
+
+/* 17. ENTRANCE ANIMATIONS */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero>div:first-child {
+  animation: fadeUp 0.65s ease both;
+}
+
+.hero-preview {
+  animation: floatCard 5s ease-in-out infinite;
+}
+
+.hero-preview:hover {
+  animation-play-state: paused;
+  transform: translateY(-7px);
+}
+
+.feature-card {
+  animation: fadeUp 0.6s ease both;
+}
+
+.feature-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+
+/* 18. TABLET RESPONSIVENESS */
+
+@media (max-width: 1024px) {
+  .hero {
+    gap: 40px;
+    padding: 75px 6%;
+  }
+  .navbar {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+  .features {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+
+/* 19. MOBILE RESPONSIVENESS */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 14px;
+    padding: 17px 5%;
+  }
+  .navbar nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    min-height: auto;
+    padding: 65px 6%;
+    text-align: center;
+  }
+  .hero h1 {
+    margin: 22px auto;
+    font-size: clamp(35px, 8vw, 52px);
+  }
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-preview {
+    margin: 0 auto;
+    max-width: 440px;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .features {
+    padding: 70px 6%;
+  }
+  .login-section {
+    padding: 70px 18px;
+  }
+}
+
+
+/* 20. SMALL MOBILE SCREENS */
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 15px 4%;
+  }
+  .logo {
+    font-size: 24px;
+  }
+  .navbar nav {
+    gap: 18px;
+  }
+  .navbar nav a {
+    font-size: 13px;
+  }
+  .hero {
+    padding: 55px 5%;
+  }
+  .hero h1 {
+    font-size: 37px;
+    letter-spacing: -1px;
+  }
+  .hero p {
+    font-size: 15px;
+  }
+  .hero-preview {
+    padding: 38px 22px;
+  }
+  .avatar {
+    width: 85px;
+    height: 85px;
+    font-size: 38px;
+  }
+  .features {
+    padding: 60px 5%;
+  }
+  .feature-card {
+    padding: 28px 23px;
+  }
+  .login-section {
+    padding: 60px 12px;
+  }
+  .login-card {
+    padding: 28px 22px;
+    border-radius: 17px;
+  }
+  .login-card>h2 {
+    font-size: 25px;
+  }
+  .tabs button {
+    padding: 11px 7px;
+    font-size: 12px;
+  }
+}
+
+
+/* 21. REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ==========================================
+ END OF PORTFOLIOPRO HOME CSS
+ ========================================== */
