@@ -1,14 +1,52 @@
 import React, { useEffect } from "react";
 import { loadScripts } from "../scripts.js";
 
+const SESSION_KEY = "portfolioSession";
+const LOGIN_URL = "/";
+
+function hasUserSession() {
+  try {
+    const session = JSON.parse(
+      sessionStorage.getItem(SESSION_KEY)
+    );
+
+    return session?.role === "user";
+  } catch {
+    return false;
+  }
+}
+
 export default function ResumeBuilder() {
   useEffect(() => {
+    function checkSession() {
+      if (!hasUserSession()) {
+        window.location.replace(LOGIN_URL);
+        return false;
+      }
+
+      return true;
+    }
+
+    if (!checkSession()) {
+      return;
+    }
+
+    window.addEventListener("pageshow", checkSession);
+
     loadScripts([
       "/features/resumeBuilder.js",
       "/features/resumePDF.js",
       "/features/resumeEditor.js"
     ]);
+
+    return () => {
+      window.removeEventListener("pageshow", checkSession);
+    };
   }, []);
+
+  if (!hasUserSession()) {
+    return null;
+  }
 
   return (
     <>
